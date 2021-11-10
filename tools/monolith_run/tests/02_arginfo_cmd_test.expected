@@ -1,0 +1,8 @@
+$0: print_arginfo.mrb
+ARGV[0]: a
+ARGV[1]: b
+ARGV[2]: c
+MC::ExePath: $ROOT/mrb_run
+MC::ProgPath: print_arginfo.mrb
+MC::IsConstructed: false
+Done.
