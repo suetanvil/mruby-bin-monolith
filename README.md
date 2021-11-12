@@ -143,7 +143,8 @@ MRuby::Build.new do |conf|
 
     # ... (snip) ...
 
-    conf.gem :github => 'suetanvil/mruby-bin-monolith'
+    conf.gem :github => 'suetanvil/mruby-bin-monolith',
+             :branch => 'main'
 end
 ```
 
