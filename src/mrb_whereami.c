@@ -1,5 +1,5 @@
 /*
-** mrb_whereami.c - Example class
+** mrb_whereami.c - MRuby bindings to whereami.
 **
 ** Copyright (c) Chris Reuter 2021
 **

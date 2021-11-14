@@ -1,8 +1,0 @@
-$0: ./print_arginfo
-ARGV[0]: a
-ARGV[1]: b
-ARGV[2]: c
-MC::ExePath: $ROOT/tests/print_arginfo
-MC::ProgPath: $ROOT/tests/print_arginfo
-MC::IsConstructed: true
-Done.
