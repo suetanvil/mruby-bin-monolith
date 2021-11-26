@@ -1,18 +1,12 @@
 
 
-
 MRuby::Gem::Specification.new('mruby-bin-monolith') do |spec|
   spec.bins = %w{monolith_run}
   spec.license = 'MIT'
   spec.authors = 'Chris Reuter'
 
   spec.add_dependency('mruby-optparse')
-
-  # We want mruby-process2, not mruby-process; unfortunately, rake is
-  # currently choking on its entry in mgem-list so we provide an
-  # explicit github dependency instead.
-  spec.add_dependency('mruby-process', :github => 'katzer/mruby-process')
-
+  spec.add_dependency 'mruby-process', mgem: 'mruby-process2'
   spec.add_test_dependency('mruby-dir')
 
   spec.cc.flags += %W{-I #{File.join(__dir__, 'src')}}
