@@ -1,11 +1,21 @@
 # Rakefile for gem development.
 
 MRUBY_CONFIG=File.expand_path(ENV["MRUBY_CONFIG"] || "test_build_config.rb")
-MRUBY_VERSION=ENV["MRUBY_VERSION"] || "master"
+MRUBY_VERSION=ENV["MRUBY_VERSION"] || "stable"
 
+# Rule to check out the mruby sources indicated in MRUBY_VERSION to
+# use for gem development.
 file :mruby do
-  sh "git clone --depth=1 git://github.com/mruby/mruby.git"
-  if MRUBY_VERSION != 'master'
+  # If we're using one of the common branches, we can clone it
+  # directly and also skip a lot of the history, letting us save some
+  # bandwidth.  Otherwise, we need to fetch the whole thing and then
+  # checkout the desired commit.
+
+  common_branch = %w{master stable}.include?(MRUBY_VERSION)
+  depth = "--depth=1 --branch=#{MRUBY_VERSION}" if common_branch
+
+  sh "git clone #{depth} https://github.com/mruby/mruby.git"
+  unless common_branch
     Dir.chdir 'mruby' do
       sh "git fetch --tags"
       rev = %x{git rev-parse #{MRUBY_VERSION}}
